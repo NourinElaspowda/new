@@ -1,0 +1,35 @@
+<div style = "text-align:center">
+<h1>Todo using Angular</h1></div>
+<div >
+  <h4>ADD</h4>
+  <input type="text" placeholder="Add Item" #todo [(ngModel)]="input" >
+  <button (click)="addTodo(todo.value )">ADD</button>
+</div>
+<h4>TODO</h4>
+<hr style="border:2px solid black;">
+<div *ngFor="let x of arr.todos">
+  <ul *ngIf="!x.completed" >
+<li>
+    <input type="checkbox" (click)="checkboxClicked(x.index)">
+</li>
+  <li *ngIf="!x.edit">{{x.text}}</li>  
+  <li *ngIf="x.edit">  <input type="text"  [(ngModel)]="x.text"></li>
+  <li *ngIf="!x.edit"><button (click)="edit(x.index)" name="edit">EDIT</button></li>
+  <li *ngIf="x.edit"><button (click)="save(x.text,x.index)" name="save">SAVE</button></li>
+<li><button (click)="delete(x.index)">DELETE</button>
+</li>
+  </ul></div>
+  <h4>COMPLETED</h4>
+  <hr style="border:2px solid black;">
+  <div *ngFor="let x of arr.todos" id="strike" >
+  <ul *ngIf="x.completed">
+      <li>
+          <input type="checkbox" checked="true"(click)= "checkboxcom(x.index)">
+      </li>
+        <li *ngIf="!x.edit">{{x.text}}</li>  
+        <li *ngIf="x.edit">  <input type="text"  [(ngModel)]="x.text"></li>
+        <li *ngIf="!x.edit"><button (click)="edit(x.index)" name="edit">EDIT</button></li>
+        <li *ngIf="x.edit"><button (click)="save(x.text,x.index)" name="save">SAVE</button></li>
+      <li><button (click)="delete(x.index)">DELETE</button></li>
+        </ul>
+</div>
